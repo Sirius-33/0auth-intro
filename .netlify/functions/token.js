@@ -1,8 +1,12 @@
+const { default: axios } = require("axios");
+
 exports.handler = async function(event, context) {
-  if (event.httpMethod !== "POST") return { httpStatusCode: 405 };
+  if (event.httpMethod !== "POST") return { httpStatusCode: 405, body: "" };
 
   var body = JSON.parse(event.body);
 
+  console.log(body.code);
+  
   var authOptions = {
     url: "https://accounts.spotify.com/api/token",
     method: "post",
